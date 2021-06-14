@@ -1,0 +1,80 @@
+body {
+    font-family: Nunito;
+}
+  
+.sidenav {
+    height: 100%;
+    width: 280px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: whitesmoke;
+    border-right: 10px solid lightslategray;
+    overflow-x: hidden;
+}
+  
+.menu a {
+    padding-left: 38px;
+    padding-bottom: 38px;
+    text-decoration: none;
+    color: #818181;
+    display: block;
+}
+
+.font-menu {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 22px;
+    letter-spacing: calc(1rem * 0.001 * 100);
+}
+  
+.font-logo {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 30px;
+    letter-spacing: calc(1rem * 0.001 * 255);
+}
+
+.menu a:hover {
+    color: black;
+}
+
+.main {
+    margin-left: 280px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    background-color: white;
+}
+
+.topbar {
+    margin-left: 280px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    background-color: lightslategray;
+    border: 1px solid red;
+}
+
+.icon {
+    background: url('logo.png');
+    height: 64px;
+    width: 64px;
+    display: block;
+    margin: auto;
+}
+
+.head {
+    width: 100%;
+}
+
+
+#logo-title {
+    text-align: center;
+    display: block;
+    padding: 0px;
+}
+
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 12px;}
+}
