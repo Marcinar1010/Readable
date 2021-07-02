@@ -1,8 +1,8 @@
 body {
     font-family: Nunito;
 }
-  
-.sidenav {
+
+#sidenav {
     height: 100%;
     width: 280px;
     position: fixed;
@@ -10,16 +10,60 @@ body {
     top: 0;
     left: 0;
     background-color: whitesmoke;
-    border-right: 10px solid lightslategray;
+    border-right: 2px solid #818181;
     overflow-x: hidden;
 }
-  
-.menu a {
+
+#window {
+    float: left;
+}
+
+#topbar {
+    height: 111px;
+    width: 100%;
+    background-color: whitesmoke;
+    border-bottom: 2px solid #818181;
+}
+
+#content {
+    font-size: 28px; /* Increased text to enable scrolling */
+    background-color: white;
+}
+
+#menu-side {
+    margin-top: 120px;
+}
+
+#menu-side a {
     padding-left: 38px;
     padding-bottom: 38px;
     text-decoration: none;
     color: #818181;
     display: block;
+}
+
+#menu-side a:hover {
+    color: black;
+}
+
+#bottom-side {
+    position: absolute;
+    bottom: 4%;
+}
+
+#username-side {
+    position: absolute;
+    left: 38px;
+}
+
+#logo-title {
+    text-align: center;
+    display: block;
+    margin-top: 25px;
+}
+
+#head-side {
+    width: 100%;
 }
 
 .font-menu {
@@ -38,40 +82,27 @@ body {
     letter-spacing: calc(1rem * 0.001 * 255);
 }
 
-.menu a:hover {
-    color: black;
-}
-
-.main {
-    margin-left: 280px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    background-color: white;
-}
-
-.topbar {
-    margin-left: 280px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    background-color: lightslategray;
-    border: 1px solid red;
-}
-
 .icon {
     background: url('logo.png');
     height: 64px;
     width: 64px;
     display: block;
     margin: auto;
+    margin-top: 45px;
 }
 
-.head {
-    width: 100%;
+.icon-small {
+    background: url('small-logo.png');
+    height: 36px;
+    width: 36px;
+    display: inline;
 }
 
-
-#logo-title {
-    text-align: center;
-    display: block;
-    padding: 0px;
+.hr {
+    width: 207px;
+    height: 2px;
+    margin: auto;
+    background-color: #818181;
 }
 
 @media screen and (max-height: 450px) {

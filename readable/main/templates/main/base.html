@@ -18,31 +18,46 @@
         <title></title>
     </head> 
     <body>
-        <!-- side navigation bar -->
-        <div class="sidenav">
-            <!-- logo and main title-->
-            <div class="head">
-                <span class='icon'></span>
-                <span class="font-logo" id="logo-title"> READABLE </span>
+            <!-- side navigation bar -->
+            <div id="sidenav">
+                <!-- logo and main title-->
+                <div id="head-side">
+                    <span class='icon'></span>
+                    <span class="font-logo" id="logo-title"> READABLE </span>
+                </div>
+                <!-- menu-->
+                <div id="menu-side">
+                    <a class="font-menu" href="#">DASHBOARD</a>
+                    <a class="font-menu" href="#">SETTINGS</a>
+                    <a class="font-menu" href="#">ABOUT THE PROJECT</a>
+                    <a class="font-menu" href="#">CONTACT</a>
+                </div>
+                <!-- bottom of the sidenav -->
+                <div id="bottom-side" class="dropdown">
+                    <!-- break line -->
+                    <div class="hr"></div>
+                    <a href="#" class="username-side d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>user</strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
             </div>
-            <!-- menu-->
-            <div class="menu">
-                <a class="font-menu" href="#">DASHBOARD</a>
-                <a class="font-menu" href="#">SETTINGS</a>
-                <a class="font-menu" href="#">ABOUT THE PROJECT</a>
-                <a class="font-menu" href="#">CONTACT</a>
+            <!-- main window -->
+            <div id="window">
+                <div id="topbar">
+                    <div class='icon-small'></div>
+                </div>
+                <div id="content">
+                    {% block content %} {% endblock %}
+                </div>
             </div>
-        </div>
-        
-        <div class="topbar">
-            <h2>bar</h2>
-        </div>
-
-        <div class="main">
-            {% block content %} {% endblock %}
-        </div>
-
-
+            <div style="clear:both"></div>
+        </div>  
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>    

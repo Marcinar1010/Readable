@@ -1,0 +1,44 @@
+[33mcommit 6992c5e7b23387c058818bce5f5b708d23b14d85[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Marcin Andrejczuk <marcin.andrejczuk.10@gmail.com>
+Date:   Mon Jun 14 20:16:52 2021 +0200
+
+    first templates
+
+[33mcommit e3a4c5bb5e3efe09e3b4a607e7e72a86e1be6cb3[m[33m ([m[1;31morigin/main[m[33m)[m
+Merge: 60c44f9 ee516a7
+Author: Marcin Andrejczuk <marcin.andrejczuk.10@gmail.com>
+Date:   Fri Jun 11 15:56:59 2021 +0200
+
+    Merge branch 'main' of https://github.com/Marcinar1010/Readable
+
+[33mcommit 60c44f9e47235e621afdde02bcb1e3bafd7ff0cf[m
+Merge: 8517ceb 6a5a18e
+Author: Marcin Andrejczuk <marcin.andrejczuk.10@gmail.com>
+Date:   Fri Jun 11 15:22:36 2021 +0200
+
+    Merge branch 'main' of https://github.com/Marcinar1010/Readable
+
+[33mcommit ee516a79acb980c87cd0d60bdb4e4aa2cf9906a4[m
+Merge: 8517ceb 6a5a18e
+Author: Marcin Andrejczuk <marcin.andrejczuk.10@gmail.com>
+Date:   Fri Jun 11 15:22:36 2021 +0200
+
+    Merge branch 'main' of https://github.com/Marcinar1010/Readable
+
+[33mcommit 8517ceb7e627baee6381844dfaac1f9b81a24714[m
+Author: Marcinar1010 <45433266+Marcinar1010@users.noreply.github.com>
+Date:   Thu Jun 10 13:42:52 2021 +0200
+
+    Update readme.md
+
+[33mcommit 6a5a18ef28c3888657d46b4306c08ed0649acd20[m
+Author: Marcinar1010 <45433266+Marcinar1010@users.noreply.github.com>
+Date:   Thu Jun 10 13:42:52 2021 +0200
+
+    Update readme.md
+
+[33mcommit 931098ea0b562b275bff4e286d6f6fd717311c5b[m
+Author: Marcin Andrejczuk <marcin.andrejczuk.10@gmail.com>
+Date:   Thu Jun 10 11:59:55 2021 +0200
+
+    second commit
