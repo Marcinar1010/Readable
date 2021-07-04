@@ -1,4 +1,5 @@
 body {
+    margin: 0;
     font-family: Nunito;
 }
 
@@ -13,9 +14,8 @@ body {
     border-right: 2px solid #818181;
     overflow-x: hidden;
 }
-
 #window {
-    float: left;
+    margin-left: 280px;
 }
 
 #topbar {
@@ -23,6 +23,7 @@ body {
     width: 100%;
     background-color: whitesmoke;
     border-bottom: 2px solid #818181;
+    position: relative;
 }
 
 #content {
@@ -35,8 +36,8 @@ body {
 }
 
 #menu-side a {
-    padding-left: 38px;
-    padding-bottom: 38px;
+    margin-left: 38px;
+    margin-bottom: 38px;
     text-decoration: none;
     color: #818181;
     display: block;
@@ -48,22 +49,24 @@ body {
 
 #bottom-side {
     position: absolute;
-    bottom: 4%;
-}
-
-#username-side {
-    position: absolute;
-    left: 38px;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
 }
 
 #logo-title {
-    text-align: center;
     display: block;
+    text-align: center;
     margin-top: 25px;
 }
 
 #head-side {
     width: 100%;
+    margin-top: 45px;
+}
+
+.username-side {
+    margin-left: 38px;
 }
 
 .font-menu {
@@ -87,22 +90,23 @@ body {
     height: 64px;
     width: 64px;
     display: block;
-    margin: auto;
-    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .icon-small {
-    background: url('small-logo.png');
-    height: 36px;
-    width: 36px;
-    display: inline;
+    position: absolute;
+    bottom: 0;
+    right: 38px;
 }
 
-.hr {
+.l-break {
     width: 207px;
     height: 2px;
-    margin: auto;
+    margin-left: auto;
+    margin-right:auto;
     background-color: #818181;
+    margin-bottom: 15px;
 }
 
 @media screen and (max-height: 450px) {
