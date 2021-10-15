@@ -1,4 +1,49 @@
 {% extends "main/base.html" %}
 {% block content %}
-    <h1>Home page!</h1>
-{% endblock %}
+
+    <div id="cards">
+        <div class="card">
+            <p class="card-title">Reading Progress</p>
+            <div class="card-body">
+                <img src="static\main\progress.png" class="card-logo"></img>
+                <p class="card-text"> Take your reading to the next level. <br>
+                    Control your reading progress, set <br>
+                    daily, monthly, yearly reading goals!
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="card-title">My books</p>
+            <div class="card-body">
+                <img src="static\main\bookshelf.png" class="card-logo"></img>
+                <p class="card-text"> Collect books you've read in your life. <br>
+                    Emotions and memiories. Take <br>
+                    notes, mark your favourite books! </p>     
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="card-title">Library</p>
+            <div class="card-body">
+
+                <img src="static\main\library.png" class="card-logo"></img>
+                <p class="card-text"> Search for interesting titles. <br>
+                    Check recommendations and rates. <br>
+                    Add books to your collections!</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <p class="card-title">Recommendations</p>
+            <div class="card-body">
+
+                <img src="static\main\recommendations.png" class="card-logo"></img>
+                <p class="card-text"> Take a look for our recommendations <br>
+                    based on your readings <br>
+                    Find experience you already love! </p>
+            </div>
+        </div>    
+        <div style="clear:both"></div>
+    </div>
+    {% endblock %}

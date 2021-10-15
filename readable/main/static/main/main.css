@@ -97,7 +97,7 @@ body {
 .icon-small {
     position: absolute;
     bottom: 0;
-    right: 38px;
+    right: 43px;
 }
 
 .l-break {
@@ -107,9 +107,4 @@ body {
     margin-right:auto;
     background-color: #818181;
     margin-bottom: 15px;
-}
-
-@media screen and (max-height: 450px) {
-.sidenav {padding-top: 15px;}
-.sidenav a {font-size: 12px;}
 }
