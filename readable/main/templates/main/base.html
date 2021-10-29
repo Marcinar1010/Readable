@@ -32,7 +32,7 @@
             <div id="menu-side">
                 <a class="font-menu" href="#">DASHBOARD</a>
                 <a class="font-menu" href="#">SETTINGS</a>
-                <a class="font-menu" href="#">ABOUT THE PROJECT</a>
+                <a class="font-menu" href="{% url 'main-about' %}">ABOUT THE PROJECT</a>
                 <a class="font-menu" href="#">CONTACT</a>
             </div>
             <!-- bottom of the sidenav -->
@@ -45,8 +45,8 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-light text-small shadow" aria-labelledby="dropdownUser1">
                     <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Log out</a></li>
                 </ul>
             </div>
         </div>

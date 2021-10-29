@@ -20,24 +20,21 @@
     <body>
         <div id="top-bar">
             <div class="logo">
-                <a class="font-logo" href="#">READABLE</a>
+                <a class="font-logo" href="{% url 'main-home' %}">READABLE</a>
             </div>
             <div class="menu">
-                <a class="font-menu" href="#">SIGN IN</a>
-                <a class="font-menu" href="#">REGISTER</a>
-                <a class="font-menu" href="#">ABOUT THE PROJECT</a>
+                {% if user.is_authenticated %}
+                    <a class="font-menu" href="{% url 'main-home' %}">HOME</a>
+                {% else %}
+                    <a class="font-menu" href="{% url 'login' %}">SIGN IN</a>
+                    <a class="font-menu" href="{% url 'register' %}">REGISTER</a>
+                {% endif %}
+                <a class="font-menu" href="{% url 'main-about' %}">ABOUT THE PROJECT</a>
                 <a class="font-menu" href="#">CONTACT</a>
             </div>
         </div>
 
         <div id="window">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class='alert alert-{{ message.tags }}'>
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
             {% block content %} {% endblock %}    
         </div>
 

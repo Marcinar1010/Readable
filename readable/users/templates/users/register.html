@@ -6,29 +6,32 @@
 
 
 {% block content %}
-
-    <span class="icon-middle"></span>
-    <form method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-            <!-- input autocomplete="off" class="form-login" name="username" placeholder="Username" type="text"!-->
-            {{ form.username }}     
-        </div>
-        <div class="form-group">
-            <!-- input class="form-login" name="password" placeholder="Password" type="password"!-->
-            {{ form.email }}     
-        </div>
-        <div class="form-group">
-            <!-- input class="form-login" name="confirmation" placeholder="Password" type="password"!-->
-            {{ form.password1 }}     
-        </div>
-        <div class="form-group">
-            <!-- input class="form-login" name="confirmation" placeholder="Password" type="password"!-->
-            {{ form.password2 }}     
-        <button class="form-login-btn" type="submit">Sign Up</button>
-        <div class="form-group">
-            {{ form.errors }}
-        </div>
-    </form>
+    <div class="form-content">
+        <span class="icon-middle"></span>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username }}     
+            </div>
+            <div class="form-group">
+                {{ form.email }}     
+            </div>
+            <div class="form-group">
+                {{ form.password1 }}     
+            </div>
+            <div class="form-group">
+                {{ form.password2 }}     
+            <button class="form-login-btn" type="submit">Sign Up</button>
+            <div class="w-100">
+                <a href="{% url 'login' %}" class="font-login">Already have an Account? Log in here</a>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class='alert alert-{{ message.tags }}'>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+        </form>
+    </div>
 
 {% endblock content %}
