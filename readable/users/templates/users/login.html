@@ -1,0 +1,27 @@
+{% extends "users/base2.html" %}
+
+{% block title %}
+    Sign In
+{% endblock title %}
+
+
+{% block content %}
+
+    <span class="icon-middle"></span>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <!-- input autocomplete="off" class="form-login" name="username" placeholder="Username" type="text"! -->  
+            {{ form.username }}      
+        </div>
+        <div class="form-group">
+            <!-- input class="form-login" name="password" placeholder="Password" type="password" !-->
+            {{ form.password }}
+        </div>
+        <button class="form-login-btn" type="submit">Sign In</button>
+        <div class="w-100">
+            <a href="#" class="font-login">Don't have an Account yet?</a>
+        </div>
+    </form>
+
+{% endblock content %}
