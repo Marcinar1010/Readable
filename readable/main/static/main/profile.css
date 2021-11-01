@@ -1,0 +1,34 @@
+.content-section {
+    background: whitesmoke;
+    padding: 10px 20px;
+    border: 1px solid #818181;
+    border-radius: 10px;
+    margin: 37px auto auto;
+    width: 50%;
+    font-size: 18px;
+  }
+
+.media-body {
+    float: left;
+}
+
+
+.account-heading {
+    font-size: 2.5rem;
+  }
+
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+    float: left;
+  }
+
+  .form-profile-btn {
+    font-size: 18px;
+    margin: 20px auto auto;
+    margin-bottom: 20px;
+    display: flex; 
+    width: 10%;
+  }
