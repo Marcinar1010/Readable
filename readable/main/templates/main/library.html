@@ -7,26 +7,47 @@
 
 {% block content %}
     <div class="library-content">
-        <form action="" method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Search for the books</legend>
-                <input type="text"autocomplete="off" class="form-search" name="search"></input>
-                <button class="form-library-btn" type="submit">Search</button><div style="clear:both"></div>
-            </fieldset>
-        </form>
+        <div class="form-library">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Search for the books</legend>
+                    <input type="text"autocomplete="off" class="form-search" name="search"></input>
+                    <button class="form-library-btn" type="submit">Search</button><div style="clear:both"></div>
+                </fieldset>
+            </form>
+        </div>
         <div class="results">
             {% for r in result %}            
                 <div class="result">
-                    <img src="{{ r.img }}" class="thumbnail" width="128" height="186">
-                    <strong >{{ r.title }}</strong>
-                    <p>
-                    {% for author in r.authors %}
-                        {{ author }}<br> 
-                    {% endfor %}
-                    </p>
-                    <button class="form-more-btn">Show more information on Google Books Website</button>
-                    <p> {{ r.description }} </p>
+                    <div class="left">
+                        <img src="{{ r.img }}" class="thumbnail">
+                        <a href="{{ r.infoLink }}" target="_blank">     
+                            <button class="form-more-btn">More Info</button>
+                        </a>
+                        <form action="">
+                            <select name="list-type" id="list-type">
+                                <option disabled selected>-</option>
+                                <option value="To Read">To Read</option>
+                                <option value="Reading">Reading</option>
+                                <option value="Have Read">Have Read</option>
+                            </select>                            
+                            <button type="submit" class="form-more-btn">Add book to</button>
+                        </form> 
+                    </div>
+                    <div class="middle">
+                        <strong class="book-title">{{ r.title }}</strong>
+                        <strong class="book-title">{{ r.subtitle }}</strong>                        
+                        <p>{% for author in r.authors %}
+                                {{ author }}<br> 
+                            {% endfor %}
+                        </p>
+                        <br><p>{{ r.categories }}</p>
+                    </div>
+                    <div class="right">
+                        <p> {{ r.description }} </p>
+                    </div>
+                    <div style="clear:both"></div>
                 </div>
             {% endfor %}            
         </div>

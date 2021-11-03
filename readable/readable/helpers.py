@@ -48,7 +48,7 @@ def lookup(text):
         try:
             item["categories"] = a['volumeInfo']['categories']
         except KeyError as exc:
-            item["categories"] = None
+            item["categories"] = ''
         
 
         result.append(item)
