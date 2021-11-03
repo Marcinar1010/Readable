@@ -19,8 +19,6 @@ def library(request):
     if request.method == 'POST':
         form = request.POST.get('search')
         result = lookup(form)
-        print(form)
-        print(result)
 
         context = {
             'result' : result
