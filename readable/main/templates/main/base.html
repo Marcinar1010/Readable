@@ -15,24 +15,30 @@
         <link rel="stylesheet" type ="text/css" href="{% static 'main/home.css' %}">
         <!-- profile css file in main/static --- css file for main content block -->
         <link rel="stylesheet" type ="text/css" href="{% static 'main/profile.css' %}">
+        <!-- library css file in main/static --- css file for main content block -->
+        <link rel="stylesheet" type ="text/css" href="{% static 'main/library.css' %}">
         
 
         <!-- linking the nunito font -->
         <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
 
-        <title></title>
+        <title> {% block title %} {% endblock %} </title>
     </head> 
     <body>
         <!-- side navigation bar -->
         <div id="sidenav">
             <!-- logo and main title-->
             <div id="head-side">
-                <span class='icon'></span>
-                <span class="font-logo" id="logo-title"> READABLE </span>
+                <a href="{% url 'main-home' %}">
+                    <span class='icon'></span>
+                </a>
+                <a href="{% url 'main-home' %}">
+                    <span class="font-logo" id="logo-title"> READABLE </span>
+                </a>
             </div>
             <!-- menu-->
             <div id="menu-side">
-                <a class="font-menu" href="#">DASHBOARD</a>
+                <a class="font-menu" href="{% url 'main-home' %}">DASHBOARD</a>
                 <a class="font-menu" href="#">SETTINGS</a>
                 <a class="font-menu" href="{% url 'main-about' %}">ABOUT THE PROJECT</a>
                 <a class="font-menu" href="#">CONTACT</a>

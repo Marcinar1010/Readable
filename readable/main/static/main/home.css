@@ -46,3 +46,11 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.card a {
+    text-decoration: none;
+}
+
+.card a:hover {
+    background-color: blue;
+}

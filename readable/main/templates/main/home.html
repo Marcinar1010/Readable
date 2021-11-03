@@ -1,4 +1,9 @@
 {% extends "main/base.html" %}
+
+{% block title %}
+    Homepage
+{% endblock title %}
+
 {% block content %}
 
     <div id="cards">
@@ -22,14 +27,16 @@
             </div>
         </div>
         <div class="card">
-            <p class="card-title">Library</p>
-            <div class="card-body">
+            <a href="{% url 'main-library' %}"> 
+                <p class="card-title">Library</p>
+                <div class="card-body">
 
-                <img src="static\main\library.png" class="card-logo"></img>
-                <p class="card-text"> Search for interesting titles. <br>
-                    Check recommendations and rates. <br>
-                    Add books to your collections!</p>
-            </div>
+                    <img src="static\main\library.png" class="card-logo"></img>
+                    <p class="card-text"> Search for interesting titles. <br>
+                        Check recommendations and rates. <br>
+                        Add books to your collections!</p>
+                </div>
+            </a>
         </div>
         <div class="card">
             <p class="card-title">Recommendations</p>

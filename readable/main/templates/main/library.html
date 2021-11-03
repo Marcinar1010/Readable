@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+{% block title %}
+    Library
+{% endblock title %}
+
+
+{% block content %}
+    <div class="library-content">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Search for the books</legend>
+                <input type="text"autocomplete="off" class="form-search" name="search"></input>
+                <button class="form-library-btn" type="submit">Search</button><div style="clear:both"></div>
+            </fieldset>
+        </form>
+        <div class="results">
+            {% for r in result %}            
+                <div class="result">
+                    <strong >{{ r.title }}</strong>
+                    <p>{{ r.author }}</p>
+                </div>
+            {% endfor %}            
+        </div>
+    </div>
+
+{% endblock content %}

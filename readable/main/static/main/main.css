@@ -47,6 +47,15 @@ body {
     color: black;
 }
 
+#head-side a {
+    text-decoration: none;
+    color: black;
+}
+
+#head-side a:hover {
+    color: #818181;
+}
+
 #bottom-side {
     position: absolute;
     bottom: 15px;
