@@ -1,4 +1,5 @@
 {% extends "main/base.html" %}
+{% load static %}
 {% block title %}
     Library
 {% endblock title %}
@@ -17,8 +18,15 @@
         <div class="results">
             {% for r in result %}            
                 <div class="result">
+                    <img src="{{ r.img }}" class="thumbnail" width="128" height="186">
                     <strong >{{ r.title }}</strong>
-                    <p>{{ r.author }}</p>
+                    <p>
+                    {% for author in r.authors %}
+                        {{ author }}<br> 
+                    {% endfor %}
+                    </p>
+                    <button class="form-more-btn">Show more information on Google Books Website</button>
+                    <p> {{ r.description }} </p>
                 </div>
             {% endfor %}            
         </div>

@@ -16,17 +16,26 @@ def lookup(text):
     except requests.RequestException:
         return None
 
-    try: 
-        search = response.json()
-        result = list()
-        for a in search['items']:
-            result.append({
-                'id' : a['id'],
-                'title' : a['volumeInfo']['title'],
-                'authors' : a['volumeInfo']['authors']
-            })
-            print(result)
-        return result
+    search = response.json()
+    result = list()
+    for a in search['items']:
+        item = {}
+        item["id"] = a["id"]
+        item["title"] = a['volumeInfo']["title"]
+        
+        # 1
+        #if "authors" in a["volumeinfo"]:
+        #    item["authors"] = a['volumeInfo']['authors']
+        # 2
+        # item["authors"] = a['volumeInfo']['authors'] if "authors" in a["volumeinfo"] else None
+        # 3
+        try:
+            item["authors"] = a['volumeInfo']['authors']
+        except KeyError as exc:
+            item["authors"] = None
 
-    except (KeyError, TypeError, ValueError):
-        return None
+        result.append(item)
+    return result
+
+    
+    
