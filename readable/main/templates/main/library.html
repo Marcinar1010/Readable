@@ -31,7 +31,7 @@
                         <a href="{{ r.infoLink }}" target="_blank">     
                             <button class="form-more-btn">More Info</button>
                         </a>
-                        <form class="option" name="option" action="" method="POST">
+                        <form class="option" name="option" action="{% url 'reading-status' %}" method="POST" >
                             {% csrf_token %}
                             {{ form.list_type }}
                             {{ form.title }}
