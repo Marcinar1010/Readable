@@ -48,16 +48,30 @@ def library(request):
             u = User.objects.get(id=request.user.id)
             
             # check if this book is already in the database
-            if not Book.objects.filter(google_id=request.POST["google_id"]).exists():
-                b = u.book_set.create(
+            b = Book.objects.filter(google_id=request.POST["google_id"]).first()
+            if not b:
+                b = Book(
                         google_id=request.POST["google_id"], 
                         description=request.POST["description"], 
                         cover_url=request.POST["cover_url"], 
-                        authors=request.POST["authors"]
+                        authors=request.POST["authors"],
+                        title=request.POST["title"]
                 )
+                b.save()
+            
+            #form_list_type.fields["user"] = u
+            #form_list_type.fields["book"] = b
             # book there or created, put the data to database            
+            #if form_list_type.is_valid():
+            #    form_list_type.save()
+            #    messages.success(request, f'The book has been added to your collection!')
+
+
+
+            # metoda 2: po walidacji reczne utworzenie relacji
             if form_list_type.is_valid():
-                form_list_type.save()
+                r = ReadingStatus(user=u, book=b, list_type=form_list_type.cleaned_data["list_type"])
+                r.save()
                 messages.success(request, f'The book has been added to your collection!')
             # breakpoint           
             print("Stop")

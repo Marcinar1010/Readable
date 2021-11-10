@@ -6,11 +6,11 @@ from django.contrib.auth.models import User
 
 class Book(models.Model):
     google_id = models.CharField(max_length=30)
-    title = models.TextField()
-    description = models.TextField()
+    title = models.TextField(null=True)
+    description = models.TextField(null=True)
     user = models.ManyToManyField(User, through="ReadingStatus")
-    cover_url = models.TextField()
-    authors = models.TextField(default="None")
+    cover_url = models.TextField(null=True)
+    authors = models.TextField(null=True)
 
     def __str__(self):
         return f"Book nr: { self.id }  title: {self.title}"
@@ -27,4 +27,4 @@ class ReadingStatus(models.Model):
     list_type = models.CharField(max_length=1, choices=LIST_TYPES)
 
     def __str__(self):
-        return f"Book nr: { self.book.id } is in '{ self.get_list_type_display() } List' - User: { self.user.username }"
+        return f"{ self.book } is in '{ self.get_list_type_display() } List' - User: { self.user.username }"
