@@ -11,28 +11,35 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Search for the books</legend>
+                    <legend class="border-bottom mb-4">Search for the books
+                        <div style="display: inline; margin-left: 20px;">
+                            <a href="https://www.google.com">
+                                <img src="https://books.google.com/googlebooks/images/poweredby.png" border="0" style="border: 0">
+                            </a>
+                        </div>                                     
+                    </legend>
                     <input type="text"autocomplete="off" class="form-search" name="search"></input>
                     <button class="form-library-btn" type="submit">Search</button><div style="clear:both"></div>
                 </fieldset>
             </form>
         </div>
         <div class="results">
-            {% for r in result %}            
+            {% for r, form in results %}            
                 <div class="result">
                     <div class="left">
-                        <img src="{{ r.img }}" class="thumbnail">
+                        <img src="{{ r.cover_url }}" class="thumbnail">
                         <a href="{{ r.infoLink }}" target="_blank">     
                             <button class="form-more-btn">More Info</button>
                         </a>
-                        <form action="">
-                            <select name="list-type" id="list-type">
-                                <option disabled selected>-</option>
-                                <option value="To Read">To Read</option>
-                                <option value="Reading">Reading</option>
-                                <option value="Have Read">Have Read</option>
-                            </select>                            
-                            <button type="submit" class="form-more-btn">Add book to</button>
+                        <form class="option" name="option" action="" method="POST">
+                            {% csrf_token %}
+                            {{ form.list_type }}
+                            {{ form.title }}
+                            {{ form.google_id }}
+                            {{ form.authors }}
+                            {{ form.description }}
+                            {{ form.cover_url }}
+                            <button type="submit" name="list-type" class="form-more-btn">Add book to</button>
                         </form> 
                     </div>
                     <div class="middle">
@@ -49,7 +56,7 @@
                     </div>
                     <div style="clear:both"></div>
                 </div>
-            {% endfor %}            
+            {% endfor %}   
         </div>
     </div>
 

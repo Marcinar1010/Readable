@@ -20,19 +20,21 @@ def lookup(text):
     result = list()
     for a in search['items']:
         item = {}
-        item["id"] = a["id"]
-        item["title"] = a['volumeInfo']["title"]
-        # 1
         if "imageLinks" in a["volumeInfo"]:
-            item["img"] = a['volumeInfo']['imageLinks']['thumbnail']
+            item["cover_url"] = a['volumeInfo']['imageLinks']['thumbnail']
         else:
-            item["img"] = "/static/main/default_book_cover.jpg"
+            item["cover_url"] = "/static/main/default_book_cover.jpg"
         
         if "subtitle" in a["volumeInfo"]:
             item["subtitle"] = a['volumeInfo']['subtitle']
-        # 2
-        # item["authors"] = a['volumeInfo']['authors'] if "authors" in a["volumeinfo"] else None
-        # 3
+        try:
+            item["id"] = a["id"]
+        except KeyError as exc:
+            item["id"] = None
+        try:
+            item["title"] = a['volumeInfo']["title"]
+        except KeyError as exc:
+            item["title"] = None
         try:
             item["authors"] = a['volumeInfo']['authors']
         except KeyError as exc:
@@ -40,7 +42,7 @@ def lookup(text):
         try:
             item["description"] = a['volumeInfo']['description']
         except KeyError as exc:
-            item["description"] = ''
+            item["description"] = None
         try:
             item["infoLink"] = a['volumeInfo']['infoLink']
         except KeyError as exc:
@@ -48,7 +50,7 @@ def lookup(text):
         try:
             item["categories"] = a['volumeInfo']['categories']
         except KeyError as exc:
-            item["categories"] = ''
+            item["categories"] = None
         
 
         result.append(item)

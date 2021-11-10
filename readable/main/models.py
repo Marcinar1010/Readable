@@ -1,17 +1,30 @@
 from django.db import models
+from django.db.models.fields import TextField
+from django.db.models.fields.related import ManyToManyField
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-# Create your models here.
-
-class Authors(models.Model):
-    name = models.TextField()
-    year = models.PositiveIntegerField()
-
-class books(models.Model):
+class Book(models.Model):
     google_id = models.CharField(max_length=30)
     title = models.TextField()
-    author = models.ForeignKey(Authors, on_delete=models.PROTECT)
-    review = models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    language = models.CharField(max_length=2)
+    description = models.TextField()
+    user = models.ManyToManyField(User, through="ReadingStatus")
+    cover_url = models.TextField()
+    authors = models.TextField(default="None")
+
+    def __str__(self):
+        return f"Book nr: { self.id }  title: {self.title}"
+
+class ReadingStatus(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    book = models.ForeignKey(Book, on_delete=models.PROTECT)
+
+    LIST_TYPES = (
+        ('T', 'To Read'),
+        ('R', 'Reading'),
+        ('H', 'Have Read'),
+    )
+    list_type = models.CharField(max_length=1, choices=LIST_TYPES)
+
+    def __str__(self):
+        return f"Book nr: { self.book.id } is in '{ self.get_list_type_display() } List' - User: { self.user.username }"
