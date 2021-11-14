@@ -42,10 +42,10 @@ def library(request):
     else:
         return render(request, 'main/library.html')
 
+# Adding books to users collection
 @login_required
 def reading_status(request):
     if request.method == "POST":
-        # other forms - putting books into private collections
         form_list_type = ListUpdateForm(request.POST)
 
         # currently logged in user
@@ -63,20 +63,39 @@ def reading_status(request):
             )
             b.save()
         
-        #form_list_type.fields["user"] = u
-        #form_list_type.fields["book"] = b
-        # book there or created, put the data to database            
-        #if form_list_type.is_valid():
-        #    form_list_type.save()
-        #    messages.success(request, f'The book has been added to your collection!')
-
-
-
-        # metoda 2: po walidacji reczne utworzenie relacji
         if form_list_type.is_valid():
             reading_status = form_list_type.save(commit=False)
             reading_status.book = b
             reading_status.user = u
             reading_status.save()
             messages.success(request, f'The book has been added to your collection!')
+
     return redirect("main-library")
+
+
+
+# Viewing collections
+@login_required
+def bookshelf(request):
+    # load all books from "to read list"
+    search = ReadingStatus.objects.filter(user=request.user)
+    to_read =[]
+    reading = []
+    have_read = []
+
+    # creating all of the users book lists
+    for r in search:
+        if r.list_type == 'T':
+            to_read.append(r.book)
+        if r.list_type == 'R':
+            reading.append(r.book)
+        if r.list_type == 'H':
+            have_read.append(r.book)
+
+    context = {
+        'to_read' : to_read,
+        'reading' : reading,
+        'have_read' : have_read
+    }
+
+    return render(request, 'main/bookshelf.html', context)

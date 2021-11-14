@@ -1,0 +1,28 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}
+    Bookshelf
+{% endblock title %}
+
+
+{% block content %}
+    <div class="bookshelf-content">
+        <div class="bookshelf-heading">
+            <div class="list-type">
+                {% for book in to_read %}
+                    <p> {{ book.title }} </p>
+                {% endfor %}
+            </div>
+            <div class="list-type">
+                {% for book in reading %}
+                    <p> {{ book.title }} </p>
+                {% endfor %}
+            </div>
+            <div class="list-type">
+                {% for book in have_read %}
+                    <p> {{ book.title }} </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

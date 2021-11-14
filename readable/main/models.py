@@ -13,7 +13,7 @@ class Book(models.Model):
     authors = models.TextField(null=True)
 
     def __str__(self):
-        return f"Book nr: { self.id }  title: {self.title}"
+        return f"Nr: { self.id }  title: {self.title}"
 
 class ReadingStatus(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)

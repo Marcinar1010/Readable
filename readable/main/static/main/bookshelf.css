@@ -1,0 +1,20 @@
+.bookshelf-content{
+    width: 100%;
+    font-size: 18px;
+}
+
+.bookshelf-wraper {
+    margin: 30px 43px 30px 43px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.bookshelf-wraper > div {
+    background-color: blueviolet;
+    font-size: 20px;
+}
+
+.list-type {
+    width: 500px;
+}

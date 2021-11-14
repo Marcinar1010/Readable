@@ -18,13 +18,15 @@
             </div>
         </div>
         <div class="card">
-            <p class="card-title">My books</p>
-            <div class="card-body">
-                <img src="static\main\bookshelf.png" class="card-logo"></img>
-                <p class="card-text"> Collect books you've read in your life. <br>
-                    Emotions and memiories. Take <br>
-                    notes, mark your favourite books! </p>     
-            </div>
+            <a href="{% url 'main-bookshelf' %}"> 
+                <p class="card-title">My books</p>
+                <div class="card-body">
+                    <img src="static\main\bookshelf.png" class="card-logo"></img>
+                    <p class="card-text"> Collect books you've read in your life. <br>
+                        Emotions and memiories. Take <br>
+                        notes, mark your favourite books! </p>     
+                </div>
+            </a>
         </div>
         <div class="card">
             <a href="{% url 'main-library' %}"> 
