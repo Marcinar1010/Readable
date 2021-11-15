@@ -8,6 +8,13 @@
 {% block content %}
     <div class="library-content">
         <div class="form-library">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class='alert alert-{{ message.tags }}'>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
             <form action="" method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
@@ -24,13 +31,6 @@
             </form>
         </div>
         <div class="results">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class='alert alert-{{ message.tags }}'>
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
             {% for r, form in results %}            
                 <div class="result">
                     <div class="left">
@@ -38,7 +38,7 @@
                         <a href="{{ r.infoLink }}" target="_blank">     
                             <button class="form-more-btn">More Info</button>
                         </a>
-                        <form class="option" name="option" action="{% url 'main-reading-status' %}" method="POST" >
+                        <form class="option-list" name="option" action="{% url 'main-create-status' %}" method="POST" >
                             {% csrf_token %}
                             {{ form.list_type }}
                             {{ form.title }}

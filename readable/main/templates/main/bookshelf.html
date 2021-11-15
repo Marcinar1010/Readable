@@ -7,20 +7,91 @@
 
 {% block content %}
     <div class="bookshelf-content">
-        <div class="bookshelf-heading">
+        <div class="bookshelf-result">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class='alert alert-{{ message.tags }}'>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <h2>"To Read" Collection</h2>
             <div class="list-type">
-                {% for book in to_read %}
-                    <p> {{ book.title }} </p>
+                {% for status, form in to_read %}
+                    <div class="bookshelf-item">
+                        <div class="bookshelf-iteml">
+                            <img src="{{ status.book.cover_url }}" class="thumbnail">
+                            <a href="#" target="_blank">     
+                                <button class="form-more-btn">More Info</button>
+                            </a>
+                            <form action="{% url 'main-update-status' status.id %}" method="POST" >
+                                {% csrf_token %}
+                                {{ form.list_type }}
+                                <button type="submit" class="form-more-btn">Move book to</button>
+                            </form> 
+                            <a href="{% url 'main-delete-status' status.id %}">
+                                <button class="form-more-btn">Delete book</button>
+                            </a> 
+                        </div>
+                        <div class="bookshelf-itemr">
+                            <p> {{ status.book.title }} </p>
+                            <p> {{ status.book.authors }} </p>
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
+        </div>
+        <div class="bookshelf-result">
+            <h2>"Reading" Collection</h2>
             <div class="list-type">
-                {% for book in reading %}
-                    <p> {{ book.title }} </p>
+                {% for status, form in reading %}
+                    <div class="bookshelf-item">
+                        <div class="bookshelf-iteml">
+                            <img src="{{ status.book.cover_url }}" class="thumbnail">
+                            <a href="#" target="_blank">     
+                                <button class="form-more-btn">More Info</button>
+                            </a>
+                            <form action="{% url 'main-update-status' status.id %}" method="POST" >
+                                {% csrf_token %}
+                                {{ form.list_type }}
+                                <button type="submit" class="form-more-btn">Move book to</button>
+                            </form> 
+                            <a href="{% url 'main-delete-status' status.id %}">
+                                <button class="form-more-btn">Delete book</button>
+                            </a> 
+                        </div>
+                        <div class="bookshelf-itemr">
+                            <p> {{ status.book.title }} </p>
+                            <p> {{ status.book.authors }} </p>
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
+        </div>
+        <div class="bookshelf-result">
+            <h2>"Have Read" Collection</h2>
             <div class="list-type">
-                {% for book in have_read %}
-                    <p> {{ book.title }} </p>
+                {% for status, form in have_read %}
+                    <div class="bookshelf-item">
+                        <div class="bookshelf-iteml">
+                            <img src="{{ status.book.cover_url }}" class="thumbnail">
+                            <a href="#" target="_blank">     
+                                <button class="form-more-btn">More Info</button>
+                            </a>
+                            <form action="{% url 'main-update-status' status.id %}" method="POST" >
+                                {% csrf_token %}
+                                {{ form.list_type }}
+                                <button type="submit" class="form-more-btn">Move book to</button>
+                            </form> 
+                            <a href="{% url 'main-delete-status' status.id %}">
+                                <button class="form-more-btn">Delete book</button>
+                            </a> 
+                        </div>
+                        <div class="bookshelf-itemr">
+                            <p> {{ status.book.title }} </p>
+                            <p> {{ status.book.authors }} </p>
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
         </div>

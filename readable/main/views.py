@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from readable.helpers import lookup
 from main.models import Book, ReadingStatus
-from users.forms import ListUpdateForm
+from users.forms import BookAddingForm, ListUpdateForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -25,7 +25,7 @@ def library(request):
         result = lookup(request.POST.get('search'))
         forms = []
         for r in result:
-            form = ListUpdateForm(initial={
+            form = BookAddingForm(initial={
             "title": r["title"],
             "google_id": r["id"],
             "description": r["description"],
@@ -44,9 +44,9 @@ def library(request):
 
 # Adding books to users collection
 @login_required
-def reading_status(request):
+def create_status(request):
     if request.method == "POST":
-        form_list_type = ListUpdateForm(request.POST)
+        form_list_type = BookAddingForm(request.POST)
 
         # currently logged in user
         u = User.objects.get(id=request.user.id)
@@ -77,25 +77,63 @@ def reading_status(request):
 # Viewing collections
 @login_required
 def bookshelf(request):
-    # load all books from "to read list"
+    # load all books from the current user
     search = ReadingStatus.objects.filter(user=request.user)
     to_read =[]
     reading = []
     have_read = []
+    forms_t = []
+    forms_r = []
+    forms_h = []
 
     # creating all of the users book lists
     for r in search:
         if r.list_type == 'T':
-            to_read.append(r.book)
+            to_read.append(r)
+            form = ListUpdateForm(instance=r)
+            forms_t.append(form)
         if r.list_type == 'R':
-            reading.append(r.book)
+            reading.append(r)
+            form = ListUpdateForm(request.POST or None, instance=r)
+            forms_r.append(form)
         if r.list_type == 'H':
-            have_read.append(r.book)
+            have_read.append(r)
+            form = ListUpdateForm(request.POST or None, instance=r)
+            forms_h.append(form)
 
     context = {
-        'to_read' : to_read,
-        'reading' : reading,
-        'have_read' : have_read
+        'to_read' : zip(to_read, forms_t),
+        'reading' : zip(reading, forms_r),
+        'have_read' : zip(have_read, forms_h),
     }
 
     return render(request, 'main/bookshelf.html', context)
+
+
+
+# Move the book to other collection
+@login_required
+def update_status(request, status_id):
+    status = ReadingStatus.objects.get(pk=status_id)
+    form = ListUpdateForm(request.POST or None, instance=status)   
+    if form.is_valid():
+        form.save()
+        status = ReadingStatus.objects.get(pk=status_id)
+        messages.success(request, f'The book "{status.book.title}" has been moved to "{status.get_list_type_display()}" collection!')   
+        return redirect('main-bookshelf')
+
+
+
+# Delete the book from the collections
+@login_required
+def delete_status(request, status_id):
+    status = ReadingStatus.objects.get(pk=status_id)
+    status.delete()
+    messages.success(request, f'The book has been deleted from your collection!')   
+    return redirect('main-bookshelf')
+
+
+# Reccomendations
+@login_required
+def reco(request):
+    return render(request, 'main/reco.html')    

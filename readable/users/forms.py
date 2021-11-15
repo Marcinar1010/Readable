@@ -68,7 +68,7 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['image']
 
-class ListUpdateForm(forms.ModelForm):
+class BookAddingForm(forms.ModelForm):
     google_id = forms.CharField(max_length=30, widget=forms.HiddenInput())
     title = forms.CharField(widget=forms.HiddenInput(), required=False)
     description = forms.CharField(widget=forms.HiddenInput(), required=False)
@@ -87,3 +87,16 @@ class ListUpdateForm(forms.ModelForm):
         model = ReadingStatus
         fields = ['list_type']
 
+class ListUpdateForm(forms.ModelForm):
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["list_type"].widget.attrs.update({
+            'name':'list_type_update',
+            'required':'',
+            'class': 'option-list',
+            })
+
+    class Meta:
+        model = ReadingStatus
+        fields = ['list_type']
