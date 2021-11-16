@@ -19,6 +19,10 @@
         <link rel="stylesheet" type ="text/css" href="{% static 'main/library.css' %}">
         <!-- bookshelf css file in main/static --- css file for main content block -->
         <link rel="stylesheet" type ="text/css" href="{% static 'main/bookshelf.css' %}">
+        <!-- progress css file in main/static --- css file for main content block -->
+        <link rel="stylesheet" type ="text/css" href="{% static 'main/progress.css' %}">
+
+        
         
         <!-- linking the nunito font -->
         <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
@@ -63,6 +67,7 @@
         <div id="window">
             <div id="topbar">
                 <img src="/static/main/small-logo.png" class="icon-small"></img>
+                <span class="counter"><span class="counter-text"></span>{{ count }}/{{ goal }}</span>
             </div>
             <div id="content">
                 {% block content %} {% endblock %}

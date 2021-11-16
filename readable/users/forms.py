@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.forms.fields import Field
-from main.models import ReadingStatus
+from main.models import ReadingStatus, ReadingProgress
 from .models import Profile
 
 class SignUpForm(UserCreationForm):
@@ -74,10 +74,11 @@ class BookAddingForm(forms.ModelForm):
     description = forms.CharField(widget=forms.HiddenInput(), required=False)
     cover_url = forms.CharField(widget=forms.HiddenInput(), required=False)
     authors = forms.CharField(widget=forms.HiddenInput(), required=False)
+    info_url = forms.CharField(widget=forms.HiddenInput())
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["list_type"].widget.attrs.update({
+        self.fields["list_type_add"].widget.attrs.update({
             'name':'list_type',
             'required':'',
             'class': 'option-list',
@@ -100,3 +101,10 @@ class ListUpdateForm(forms.ModelForm):
     class Meta:
         model = ReadingStatus
         fields = ['list_type']
+
+
+class ProgressUpdate(forms.ModelForm):
+    
+    class Meta:
+        model = ReadingProgress
+        fields = ['year_goal']

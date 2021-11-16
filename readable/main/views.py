@@ -1,18 +1,34 @@
+from typing import Counter
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from readable.helpers import lookup
 from main.models import Book, ReadingStatus
-from users.forms import BookAddingForm, ListUpdateForm
+from users.forms import BookAddingForm, ListUpdateForm, ReadingProgress, ProgressUpdate
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.utils import timezone
 
 
 
 @login_required
 # home page
 def home(request):
-    return render(request, 'main/home.html')
+    # load current goal and count the read books in current year
+    r = ReadingProgress.objects.get(user=request.user)
+    goal = r.year_goal
+    current_year = timezone.now().year
+    q_set = ReadingStatus.objects.filter(user=request.user).filter(list_type="H")
+    count = 0
+    for q in q_set:
+        if q.date_added.year == current_year:
+            count += 1
+
+    context = {
+        'goal' : goal,
+        'count' : count
+    }
+    return render(request, 'main/home.html', context)
 
 # about the project page
 def about(request):
@@ -21,6 +37,21 @@ def about(request):
 # library
 @login_required
 def library(request):
+    # load current goal and count the read books in current year
+    r = ReadingProgress.objects.get(user=request.user)
+    goal = r.year_goal
+    current_year = timezone.now().year
+    q_set = ReadingStatus.objects.filter(user=request.user).filter(list_type="H")
+    count = 0
+    for q in q_set:
+        if q.date_added.year == current_year:
+            count += 1
+
+    context = {
+        'goal' : goal,
+        'count' : count
+    }
+
     if request.method == 'POST' and "search" in request.POST:
         result = lookup(request.POST.get('search'))
         forms = []
@@ -30,17 +61,20 @@ def library(request):
             "google_id": r["id"],
             "description": r["description"],
             "authors" : r["authors"],
-            "cover_url" : r["cover_url"]
+            "cover_url" : r["cover_url"],
+            "info_url" : r["info_url"]
             })
             forms.append(form)
 
         context = {
-            'results' : zip(result, forms)
+            'results' : zip(result, forms),
+            'goal' : goal,
+            'count' : count
         }
         return render(request, 'main/library.html', context)
 
     else:
-        return render(request, 'main/library.html')
+        return render(request, 'main/library.html', context)
 
 # Adding books to users collection
 @login_required
@@ -59,7 +93,8 @@ def create_status(request):
                     description=request.POST["description"], 
                     cover_url=request.POST["cover_url"], 
                     authors=request.POST["authors"],
-                    title=request.POST["title"]
+                    title=request.POST["title"],
+                    info_url=request.POST["info_url"]
             )
             b.save()
         
@@ -77,6 +112,17 @@ def create_status(request):
 # Viewing collections
 @login_required
 def bookshelf(request):
+
+    # load current goal and count the read books in current year
+    r = ReadingProgress.objects.get(user=request.user)
+    goal = r.year_goal
+    current_year = timezone.now().year
+    q_set = ReadingStatus.objects.filter(user=request.user).filter(list_type="H")
+    count = 0
+    for q in q_set:
+        if q.date_added.year == current_year:
+            count += 1
+
     # load all books from the current user
     search = ReadingStatus.objects.filter(user=request.user)
     to_read =[]
@@ -102,9 +148,11 @@ def bookshelf(request):
             forms_h.append(form)
 
     context = {
-        'to_read' : zip(to_read, forms_t),
-        'reading' : zip(reading, forms_r),
-        'have_read' : zip(have_read, forms_h),
+        'to_read' : list(zip(to_read, forms_t)),
+        'reading' : list(zip(reading, forms_r)),
+        'have_read' : list(zip(have_read, forms_h)),
+        'goal' : goal,
+        'count' : count
     }
 
     return render(request, 'main/bookshelf.html', context)
@@ -136,4 +184,49 @@ def delete_status(request, status_id):
 # Reccomendations
 @login_required
 def reco(request):
-    return render(request, 'main/reco.html')    
+    # load current goal and count the read books in current year
+    r = ReadingProgress.objects.get(user=request.user)
+    goal = r.year_goal
+    current_year = timezone.now().year
+    q_set = ReadingStatus.objects.filter(user=request.user).filter(list_type="H")
+    count = 0
+    for q in q_set:
+        if q.date_added.year == current_year:
+            count += 1
+    context = {
+        'goal' : goal,
+        'count' : count
+    }
+    return render(request, 'main/reco.html', context)    
+
+# Reading progress
+@login_required
+def progress(request):
+
+    # load current goal and count the read books in current year
+    r = ReadingProgress.objects.get(user=request.user)
+    goal = r.year_goal
+    current_year = timezone.now().year
+    q_set = ReadingStatus.objects.filter(user=request.user).filter(list_type="H")
+    count = 0
+    for q in q_set:
+        if q.date_added.year == current_year:
+            count += 1
+    else:
+        i = ReadingProgress.objects.filter(user=request.user).first()
+        form = ProgressUpdate(instance=i)
+        context = {
+            "form" : form,
+            'goal' : goal,
+            'count' : count
+        }
+    return render(request, 'main/progress.html', context)
+
+def progress_update(request):
+    if request.method == "POST":
+        form = ProgressUpdate(request.POST, instance=ReadingProgress.objects.get(user=request.user))
+        if form.is_valid():
+            form.save()
+            f = form.cleaned_data['year_goal']
+            messages.success(request, f'Your yeraly goal has been changed to {f}!')   
+            return redirect('main-progress')

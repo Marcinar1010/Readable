@@ -11,4 +11,6 @@ urlpatterns = [
     path('bookshelf/', views.bookshelf, name="main-bookshelf"),
     path('update_status/<status_id>', views.update_status, name="main-update-status"),
     path('reco/', views.reco, name="main-reco"),
-]
+    path('progress/', views.progress, name="main-progress"),
+    path('progress_update/', views.progress_update, name="main-progress-update"),
+    ]

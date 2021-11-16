@@ -35,7 +35,7 @@
                 <div class="result">
                     <div class="left">
                         <img src="{{ r.cover_url }}" class="thumbnail">
-                        <a href="{{ r.infoLink }}" target="_blank">     
+                        <a href="{{ r.info_url }}" target="_blank">     
                             <button class="form-more-btn">More Info</button>
                         </a>
                         <form class="option-list" name="option" action="{% url 'main-create-status' %}" method="POST" >
@@ -46,6 +46,7 @@
                             {{ form.authors }}
                             {{ form.description }}
                             {{ form.cover_url }}
+                            {{ form.info_url }}
                             <button type="submit" name="list-type" class="form-more-btn">Add book to</button>
                         </form> 
                     </div>

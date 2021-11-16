@@ -1,16 +1,14 @@
 import os
 import requests
 import urllib.parse
-
+from .local_settings import GOOGLE_BOOKS_KEY
 
 
 # contacting the API
 def lookup(text):
     try:
-        # api key to the google books api service
-        api_key = 'AIzaSyCZg53Tq2uabnmxrUq2iPOp_-aky7QvSb8'
         # real url to api
-        url = f"https://www.googleapis.com/books/v1/volumes?q={urllib.parse.quote_plus(text)}&projection=LITE&printType=books&maxResults=10&orderBy=relevance&key={api_key}"
+        url = f"https://www.googleapis.com/books/v1/volumes?q={urllib.parse.quote_plus(text)}&projection=LITE&printType=books&maxResults=10&orderBy=relevance&key={GOOGLE_BOOKS_KEY}"
         response = requests.get(url)
         response.raise_for_status()
     except requests.RequestException:
@@ -44,9 +42,9 @@ def lookup(text):
         except KeyError as exc:
             item["description"] = None
         try:
-            item["infoLink"] = a['volumeInfo']['infoLink']
+            item["info_url"] = a['volumeInfo']['infoLink']
         except KeyError as exc:
-            item["infoLink"] = None
+            item["info_url"] = None
         try:
             item["categories"] = a['volumeInfo']['categories']
         except KeyError as exc:

@@ -8,14 +8,16 @@
 
     <div id="cards">
         <div class="card">
-            <p class="card-title">Reading Progress</p>
-            <div class="card-body">
-                <img src="static\main\progress.png" class="card-logo"></img>
-                <p class="card-text"> Take your reading to the next level. <br>
-                    Control your reading progress, set <br>
-                    daily, monthly, yearly reading goals!
-                </p>
-            </div>
+            <a href="{% url 'main-progress' %}"> 
+                <p class="card-title">Reading Progress</p>
+                <div class="card-body">
+                    <img src="static\main\progress.png" class="card-logo"></img>
+                    <p class="card-text"> Take your reading to the next level. <br>
+                        Control your reading progress, set <br>
+                        daily, monthly, yearly reading goals!
+                    </p>
+                </div>
+            </a>
         </div>
         <div class="card">
             <a href="{% url 'main-bookshelf' %}"> 
