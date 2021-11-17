@@ -29,3 +29,25 @@
 #cs50link {
     color: red;
 }
+
+#contact {
+    font-size: 19px;
+    text-align: center;
+    margin-left: 30px;
+}
+
+#con {
+    font-size: 18px;
+    text-align: left;
+    font-style: oblique;
+}
+
+#header-contact {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: calc(1rem * 0.001 * 300);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

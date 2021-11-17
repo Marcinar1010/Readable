@@ -230,3 +230,7 @@ def progress_update(request):
             f = form.cleaned_data['year_goal']
             messages.success(request, f'Your yeraly goal has been changed to {f}!')   
             return redirect('main-progress')
+
+
+def contact(request):
+    return render(request, 'main/contact.html')
