@@ -105,6 +105,14 @@ class ListUpdateForm(forms.ModelForm):
 
 class ProgressUpdate(forms.ModelForm):
     
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["year_goal"].widget.attrs.update({
+            'name':'progress-form',
+            'required':'',
+            'class': 'progress-form',
+            })
     class Meta:
         model = ReadingProgress
         fields = ['year_goal']

@@ -14,10 +14,18 @@
                 </div>
             {% endfor %}
         {% endif %}
-        <form method="POST" action="{% url 'main-progress-update' %}">
-            {% csrf_token %}
-            {{ form.year_goal }}
-            <button type="submit" class="form-more-btn">Update</button>
-        </form>
+        <div class="form-div">
+            <div class="form-div-l">
+                <img src="/static/main/progress-icon.png" id="progress-img"></img>
+            </div>
+            <div class="form-div-r">
+                <p>Set your reading goal for this year:</p>
+                <form method="POST" action="{% url 'main-progress-update' %}">
+                    {% csrf_token %}
+                    {{ form.year_goal }}
+                    <button type="submit" class="progress-btn">Update</button>
+                </form>
+            </div><div style="clear:both"></div>
+        </div>
     </div>
 {% endblock content %}

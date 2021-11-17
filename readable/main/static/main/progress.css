@@ -1,3 +1,40 @@
 .progress-content {
     font-size: large;
 }
+
+.progress-form {
+    width: 133px;
+    text-align: center;
+}
+
+.progress-btn {
+    width: 133px;
+}
+
+#progress-img {
+    width: 100px;
+    height: 100px;
+}
+
+.form-div {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.form-div-r, .form-div-l {
+    float:left
+}
+
+.form-div-r {
+    border-radius: 22px;
+    border: 2px solid #818181;
+    padding: 15px ;
+    margin-left: 50px;
+}
+
+.form-div-r:focus-visible {
+    outline: 2px solid green;
+}
