@@ -129,34 +129,6 @@ button:hover {
     color: black;
 }
 
-#about {
-    padding: 40px 50px 50px 50px;
-    font-size: 16px;
-}
-
-#container {
-    border: 1px solid black;
-    border-radius: 11px;
-    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.3);
-    background-color: rgba(245, 245, 245, 0.3);
-    height: auto;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    top: 10vh;
-    text-align: center;
-}
-
-#header {
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 20px;
-    letter-spacing: calc(1rem * 0.001 * 300);
-    margin-top: 30px;
-}
-
 footer {
     position: absolute;
     font-size: 18px;
