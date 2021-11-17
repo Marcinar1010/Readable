@@ -7,6 +7,7 @@
     float: left;
     background-color: white;
     border-style: none;
+    transition: transform 0.5s;
 }   
 
 #cards {
@@ -52,5 +53,5 @@
 }
 
 .card a:hover {
-    background-color: blue;
+    transform: scale(1.2 1.2);
 }

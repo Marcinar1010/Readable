@@ -1,7 +1,7 @@
 import os
 import requests
 import urllib.parse
-from .local_settings import GOOGLE_BOOKS_KEY
+from .settings import GOOGLE_BOOKS_KEY
 
 
 # contacting the API
