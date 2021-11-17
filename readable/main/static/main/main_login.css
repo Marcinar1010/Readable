@@ -1,3 +1,11 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     margin: 0;
     font-family: Nunito;
@@ -5,6 +13,9 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 43px ;
 }
 
 .font-menu {
@@ -145,3 +156,20 @@ button:hover {
     letter-spacing: calc(1rem * 0.001 * 300);
     margin-top: 30px;
 }
+
+footer {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    bottom: 0;
+    right: 43px;
+    height: 43px;
+}
+
+.footer-icon {
+    height: 30px;
+    width: 30px;
+    transform: translateY(-10px);
+    margin-right: 15px;
+}
+

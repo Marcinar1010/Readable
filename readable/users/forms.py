@@ -78,8 +78,8 @@ class BookAddingForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["list_type_add"].widget.attrs.update({
-            'name':'list_type',
+        self.fields["list_type"].widget.attrs.update({
+            'name':'list_type_add',
             'required':'',
             'class': 'option-list',
             })

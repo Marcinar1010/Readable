@@ -1,6 +1,17 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     margin: 0;
     font-family: Nunito;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 43px ;
 }
 
 #sidenav {
@@ -14,9 +25,6 @@ body {
     border-right: 2px solid #818181;
     overflow-x: hidden;
 }
-#window {
-    margin-left: 280px;
-}
 
 #topbar {
     height: 111px;
@@ -24,11 +32,6 @@ body {
     background-color: whitesmoke;
     border-bottom: 2px solid #818181;
     position: relative;
-}
-
-#content {
-    font-size: 28px; /* Increased text to enable scrolling */
-    background-color: white;
 }
 
 #menu-side {
@@ -101,6 +104,11 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    transition: 0.4s cubic-bezier(1, 0, 0, 1);
+}
+
+.icon:hover {
+    transform: scale(1.07, 1.07);
 }
 
 .icon-small {
@@ -134,4 +142,35 @@ body {
     margin-right:auto;
     background-color: #818181;
     margin-bottom: 15px;
+}
+
+#window {
+    margin-left: 280px;
+}
+
+#content {
+    font-size: 28px; /* Increased text to enable scrolling */
+    background-color: white;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 43px;
+    font-size: 18px;
+    color: black;
+    height: 43px;
+}
+
+.footer-icon {
+    height: 30px;
+    width: 30px;
+    transform: translateY(-10px);
+    margin-right: 15px;
+}
+
+.icon-google {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
 }
