@@ -14,7 +14,7 @@
     4.  - Viewing book reccomendations based on favourites and already read books
 
     I managed to accomplish simplier version of app:
-    1.  - Setting and viewing yearlt reading goals
+    1.  - Setting and viewing years reading goals
     2.  - Viewing and editing all book collections
     3.  - Searching for the books of interest using google books api service
         - Viewing the searching results
