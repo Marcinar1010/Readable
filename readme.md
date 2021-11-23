@@ -7,7 +7,7 @@
     The application provides user service, including the registration and login system.
 
     I started my project work designing the appearance of the main webpages, using Adobe XD. Projects files in /webdesign.
-    ![This is an image](/webdesign/adobe_xd.png)  
+    ![screen](webdesign/adobe_xd.png)  
 )
   	
 
