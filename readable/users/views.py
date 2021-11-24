@@ -4,7 +4,8 @@ from django.contrib import messages
 from .forms import SignUpForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from main.models import ReadingProgress
+from main.models import ReadingProgress, ReadingStatus
+from django.utils import timezone
 
 def register(request):
     if request.method == 'POST':
