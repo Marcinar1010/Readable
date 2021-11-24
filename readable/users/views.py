@@ -23,6 +23,19 @@ def register(request):
 
 @login_required
 def profile(request):
+    # load current goal and count the read books in current year
+    r = ReadingProgress.objects.get(user=request.user)
+    goal = r.year_goal
+    current_year = timezone.now().year
+    q_set = ReadingStatus.objects.filter(user=request.user).filter(list_type="H")
+    count = 0
+    for q in q_set:
+        if q.date_added.year == current_year:
+            count += 1
+    
+
+
+
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,request.FILES, instance=request.user.profile)
@@ -39,6 +52,8 @@ def profile(request):
 
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
+        'goal' : goal,
+        'count' : count
     }
     return render(request, 'users/profile.html', context)
