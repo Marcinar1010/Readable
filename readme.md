@@ -6,10 +6,8 @@
     The application also allows you to manage your book collections.
     The application provides user service, including the registration and login system.
 
+
     I started my project work designing the appearance of the main webpages, using Adobe XD. Projects files in /webdesign.
-    ![screen](webdesign/adobe_xd.png)  
-)
-  	
 
 
     The files tree was created by the use of python's framework - Django.
@@ -41,6 +39,7 @@
         - profile.css
         - progress.css  
 
+
     Files (created or modified) responsible for the operation of the application:
     urls.py
         files create url patterns and assigne them to corresponding view functions programmed in views.py
@@ -61,7 +60,6 @@
         configuration and settings of the app
 
 
-
     There were 4 basic features (views) planned fo this app:
     1.  - Setting and viewing reading goals (yearly, monthly goals)
         - Viewing few currently reading books
@@ -78,8 +76,9 @@
 
 
     technologies used in the project:
-    - django framework
-    - sqlite3 database
-    - html, css, js
+    - adobe xd
+    - python, django framework
+    - sqlite3
+    - html, css, js, bootstrap
     
     Big thanks to CS50 stuff for their effort and dedication in preparing such an excellent course!
