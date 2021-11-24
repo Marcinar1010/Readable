@@ -7,7 +7,7 @@
     The application provides user service, including the registration and login system.
 
 
-    I started my project work designing the appearance of the main webpages, using Adobe XD. Projects files in /webdesign.
+    I started working on this project, designing the layout of the main pages using Adobe xd. Projects files in /webdesign.
 
 
     The files tree was created by the use of python's framework - Django.
